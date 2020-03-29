@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+    <body onload="do_game">
+        
+        <script>
+            var target = 10;
+            var guess_input;
+            var guesses = 0;
+            var finished = false;
+            var guess_input_text ;
+            var random_number;
+            var random_number_integer;
+            function do_game(){
+                 random_number = Math.random() * 100;
+                 random_number_integer = Math.floor(random_number);
+                 target = random_number_integer + 1;
+               
+            }
+            while (!finished){
+                guess_input_text = prompt("I'am thinking of numbers " + "in the range 1 to 100.\n\n" + "what is the number?")
+                guess_input = parseInt(guess_input_text);
+                guesses += 1;
+                finished = check_guess();
+            }
+            function check_guess(){
+                if (isNaN(guess_input)){
+                    alert("You have not enter a number. \n\n");
+                    return false;
+                }
+                if ((guess_input < 1) || (guess_input > 100)){
+                  alert("Please enter integer number in the range  of 1 and 100!");
+                  return false;
+                }
+                if (guess_input < target){
+                    alert("your entrance is too small!");
+                    return false;
+                }
+                 if (guess_input > target){
+                     alert("Your entrance is too large!");
+                     return false;
+                 }
+                 
+                     alert("Yeh you're correct you win! the number was"  +   target +   ". \n\n  It took you" +  guesses +   "guesses to get the number");
+                     return true;
+                
+            }
+
+
+            
+        </script>
+    </body>
+</html>
